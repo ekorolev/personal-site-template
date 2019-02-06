@@ -1,31 +1,19 @@
-# Adonis fullstack application
+# Template for personal site
 
-This is the fullstack boilerplate for AdonisJs, it comes pre-configured with.
+## Configure
 
-1. Bodyparser
-2. Session
-3. Authentication
-4. Web security middleware
-5. CORS
-6. Edge template engine
-7. Lucid ORM
-8. Migrations and seeds
+- Copy `.env.example` file to `.env` and change environment variables for you requirments.
+- Copy `content.example.js` file to `content.js` and set up your information.
+- Add file `public/avatar.png` for customize your avatar picture.
 
 ## Setup
 
-Use the adonis command to install the blueprint
+`npm install`
 
-```bash
-adonis new yardstick
-```
+## Run
 
-or manually clone the repo and then run `npm install`.
+`node server.js`
 
+## Docker
 
-### Migrations
-
-Run the following command to run startup migrations.
-
-```js
-adonis migration:run
-```
+You can build your own docker image for you instance of that template. Install docker and build an image with Dockerfile
