@@ -1,5 +1,9 @@
 # Template for personal site
 
+## About
+
+I've built that template for my personal site. The design of it I've taken from https://themes.3rdwavemedia.com/. 
+
 ## Configure
 
 - Copy `.env.example` file to `.env` and change environment variables for you requirments.
