@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
+<head>
+    <title>{{ firstname + ' ' + lastname }}</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">  
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,400italic,300italic,300,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">   
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.css">
+    
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head> 
+
+<body>
+    <div class="wrapper">
+        <div class="sidebar-wrapper">
+            <div class="profile-container">
+            <img class="profile" src="{{avatar}}" style="width: 100px; height: 100px;' alt="" />
+                <h1 class="name">{{ firstname + ' ' + lastname }}</h1>
+                <h3 class="tagline">{{ jobtitle }}</h3>
+            </div><!--//profile-container-->
+            
+            <div class="contact-container container-block">
+                <ul class="list-unstyled contact-list">
+                    <li class="email"><i class="fa fa-envelope"></i><a href="mailto: yourname@email.com">{{ contacts.email }}</a></li>
+                    @if(contacts.phone)
+                        <li class="phone"><i class="fa fa-phone"></i><a href="tel:+79500390123">{{ contacts.phone }}</a></li>
+                    @endif
+                    <li class="github">
+                        <i class="fa fa-github"></i>
+                        <a href="https://github.com/{{ contacts.github}}" target="_blank">github.com/{{ contacts.github}}</a>
+                    </li>
+                </ul>
+            </div><!--//contact-container-->
+            
+            <div class="languages-container container-block">
+                <h2 class="container-block-title">Языки</h2>
+                <ul class="list-unstyled interests-list">
+                    @each( lang in languages )
+                        <li>{{ lang.name }} <span class="lang-desc">({{lang.status}})</span></li>
+                    @endeach
+                </ul>
+            </div><!--//interests-->
+            
+            <div class="interests-container container-block">
+                <h2 class="container-block-title">Интересы</h2>
+                <ul class="list-unstyled interests-list">
+                    @each( i in interests )
+                        <li>{{ i }}</li>
+                    @endeach
+                </ul>
+            </div><!--//interests-->
+
+        </div><!--//sidebar-wrapper-->
+        
+        <div class="main-wrapper">
+            
+            <section class="section summary-section">
+                <h2 class="section-title"><i class="fa fa-user"></i>Кратко о себе</h2>
+                <div class="summary">
+                    {{ shortabout }}    
+                </div><!--//summary-->
+            </section><!--//section-->
+            
+            <section class="section experiences-section">
+                <h2 class="section-title"><i class="fa fa-briefcase"></i>Опыт работы</h2>
+                
+                @each( job in expirience )
+                    <div class="item">
+                        <div class="meta">
+                            <div class="upper-row">
+                                <h3 class="job-title">{{ job.name }}</h3>
+                                <div class="time">{{ job.dates }}</div>
+                            </div><!--//upper-row-->
+                            <div class="company"><a href="{{ job.company.link }}" target="_blank">{{ job.company.name }}</a>, {{ job.company.city }}</div>
+                        </div><!--//meta-->
+                        <div class="details">
+                            {{{ job.description }}}
+                        </div><!--//details-->
+                    </div><!--//item-->
+                @endeach
+                
+            </section><!--//section-->
+
+            <section class="section experiences-section">
+              <h2 class="section-title"><i class="fa fa-graduation-cap"></i>Образование</h2>
+              
+                @each( e in education )
+                    <div class="item">
+                        <div class="meta">
+                            <div class="upper-row">
+                                <h3 class="job-title">{{ e.name }}</h3>
+                                <div class="time">{{ e.dates }}</div>
+                            </div><!--//upper-row-->
+                            <div class="company">{{ e.university }}, {{ e.city }}</div>
+                        </div><!--//meta-->
+                        <div class="details">
+                            <p></p>
+                        </div><!--//details-->
+                    </div><!--//item-->
+                @endeach
+            </section><!--//section-->
+            
+            <!--<section class="section projects-section">
+                <h2 class="section-title"><i class="fa fa-archive"></i>Проекты</h2>
+                <!--<div class="intro">
+                    <p>You can list your side projects or open source libraries in this section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum et ligula in nunc bibendum fringilla a eu lectus.</p>
+                </div><!--//intro-->
+                <!--<div class="item">
+                    <span class="project-title"><a href="#hook">Песенник</a></span> - <span class="project-tagline">Простой веб-сервис, который помогает составлять свою собственную библиотеку песен и аккордов для игры на музыкальном инструменте.</span>
+                </div><!--//item-->
+            <!--</section><!--//section-->
+            
+            <section class="skills-section section">
+                <h2 class="section-title"><i class="fa fa-rocket"></i>Навыки</h2>
+                <div class="skillset">
+                    @each( skill in skills )
+                        <div class="item">
+                            <h3 class="level-title">{{ skill.name }}</h3>
+                            <div class="level-bar">
+                                <div class="level-bar-inner" data-level="{{ skill.level }}%">
+                                </div>                                      
+                            </div><!--//level-bar-->                                 
+                        </div><!--//item-->
+                    @endeach
+                </div>  
+            </section><!--//skills-section-->
+            
+        </div><!--//main-body-->
+    </div>
+ 
+    <footer class="footer">
+        <div class="text-center">
+                <!--/* This template is released under the Creative Commons Attribution 3.0 License. Please keep the attribution link below when using for your own project. Thank you for your support. :) If you'd like to use the template without the attribution, you can check out other license options via our website: themes.3rdwavemedia.com */-->
+                <small class="copyright">Спасибо <i class="fa fa-heart"></i> <a href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> за шаблон!</small>
+        </div><!--//container-->
+    </footer><!--//footer-->
+ 
+    <!-- Javascript -->          
+    <script type="text/javascript" src="assets/plugins/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>    
+    <!-- custom js -->
+    <script type="text/javascript" src="assets/js/main.js"></script>            
+</body>
+</html> 
+
