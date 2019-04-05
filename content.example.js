@@ -42,9 +42,24 @@ module.exports = {
     }
   ],
   skills: [
-    { name: 'Клавостучание', level: 100 },
-    { name: 'Нервостойкость', level: 88 },
-    { name: 'C++', level: 24 },
-    { name: 'Несгораемость в аду', level: 55 },
+    {
+      section: 'Frontend',
+      technologies: [
+        { name: 'Vue', level: 100 }
+      ]
+    },
+    {
+      section: 'Backend',
+      technologies: [
+        { name: 'Hapi', level: 100 }
+      ]
+    }
+  ],
+  projects: [
+    {
+      name: 'Example',
+      link: 'javascript:;',
+      descriptiotn: 'Простое описание простого проекта'
+    }
   ]
 }

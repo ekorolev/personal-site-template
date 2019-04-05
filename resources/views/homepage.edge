@@ -114,30 +114,31 @@
                 @endeach
             </section><!--//section-->
             
-            <!--<section class="section projects-section">
+            <section class="section projects-section">
                 <h2 class="section-title"><i class="fa fa-archive"></i>Проекты</h2>
-                <!--<div class="intro">
-                    <p>You can list your side projects or open source libraries in this section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum et ligula in nunc bibendum fringilla a eu lectus.</p>
-                </div><!--//intro-->
-                <!--<div class="item">
-                    <span class="project-title"><a href="#hook">Песенник</a></span> - <span class="project-tagline">Простой веб-сервис, который помогает составлять свою собственную библиотеку песен и аккордов для игры на музыкальном инструменте.</span>
-                </div><!--//item-->
-            <!--</section><!--//section-->
+                @each( project in projects )
+                    <div class="item">
+                    <span class="project-title"><a href="{{project.link}}" target="blank">{{project.name}}</a></span> - <span class="project-tagline">{{{project.description}}}</span>
+                    </div>
+                @endeach
+            </section>
             
-            <section class="skills-section section">
-                <h2 class="section-title"><i class="fa fa-rocket"></i>Навыки</h2>
-                <div class="skillset">
-                    @each( skill in skills )
-                        <div class="item">
-                            <h3 class="level-title">{{ skill.name }}</h3>
-                            <div class="level-bar">
-                                <div class="level-bar-inner" data-level="{{ skill.level }}%">
-                                </div>                                      
-                            </div><!--//level-bar-->                                 
-                        </div><!--//item-->
-                    @endeach
-                </div>  
-            </section><!--//skills-section-->
+            @each( skillset in skills )
+                <section class="skills-section section">
+                    <h2 class="section-title"><i class="fa fa-rocket"></i>{{ skillset.section }}</h2>
+                    <div class="skillset">
+                        @each( skill in skillset.technologies )
+                            <div class="item">
+                                <h3 class="level-title">{{ skill.name }}</h3>
+                                <div class="level-bar">
+                                    <div class="level-bar-inner" data-level="{{ skill.level }}%">
+                                    </div>                                      
+                                </div><!--//level-bar-->                                 
+                            </div><!--//item-->
+                        @endeach
+                    </div>  
+                </section><!--//skills-section-->            
+            @endeach
             
         </div><!--//main-body-->
     </div>
